@@ -1,8 +1,18 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ .Title }} - {{ .Site.Title }}</title>
 
+        <title>{{ .Title }} - {{ .Site.Params.Subtitle }}</title>
+        <meta name="description" content="{{ .Site.Title }}. {{ .Site.Params.Subtitle }}">
+
+        <!-- Social metadata -->
+        <meta property="og:url" content="{{ .Site.BaseURL }}">
+        <meta property="og:type" content="website">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+
+        <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="180x180" href="{{ relURL "img/apple-touch-icon.png" }}">
         {{- range (slice 32 16) }}
         <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href="{{ printf "img/favicon-%dx%d.png" . . | relURL }}">
@@ -12,8 +22,12 @@
         <link rel="shortcut icon" href="{{ relURL "img/favicon.ico" }}">
         <meta name="msapplication-config" content="{{ relURL "browserconfig.xml" }}">
         <meta name="theme-color" content="#5bc0df">
-        {{/*- $styleBulma := resources.Get "yarn/bulma/css/bulma.min.css" | resources.Minify */}}
-        {{- $styleApp := resources.Get "sass/showcase.scss" | resources.ToCSS | resources.Minify }}
-        {{- $style := slice $styleApp | resources.Concat "css/site.min.css" | resources.Fingerprint }}
-        <link rel="stylesheet" href={{ $style.RelPermalink }}/>
+
+        <!-- Styles and scripts -->
+        {{- $style := resources.Get "sass/showcase.scss" | resources.ToCSS "css/site.css" | resources.Minify | resources.Fingerprint "sha512" }}
+        <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}">
+        {{- $scrollspyJS := resources.Get "js/scrollspy.js" }}
+        {{- $scripts := slice $scrollspyJS | resources.Concat "js/showcase.js" | resources.Minify | resources.Fingerprint "sha512" }}
+        <script src="{{ $scripts.RelPermalink }}" integrity="{{ $scripts.Data.Integrity }}"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.13.1/js/all.js"></script>
     </head>

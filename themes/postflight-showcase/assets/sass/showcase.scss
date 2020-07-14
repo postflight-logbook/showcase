@@ -1,0 +1,123 @@
+@import "../bulma/sass/utilities/initial-variables";
+
+$primary: #1f85a3;
+$primary-light: #5bc0df;
+
+$navbar-background-color: transparent;
+$navbar-item-color: white;
+$navbar-item-hover-color: $navbar-item-color;
+$navbar-item-hover-background-color: rgba(black, 0.25);
+
+@import "../bulma/bulma";
+
+h2.title {
+    color: mix(midnightblue, black);
+}
+
+// Navbar
+
+.main-navigation {
+    @extend .navbar, .is-fixed-top;
+    padding-right: 1em;
+
+    background-color: transparent;
+
+    &.is-solid {
+        @extend .is-white;
+        background-color: darken($primary, 15);
+        box-shadow: rgba(black, 0.25) 0 0 0.5em 0;
+    }
+}
+
+.navbar-brand {
+    @extend .is-large;
+}
+
+.brand-logo {
+    @extend .icon, .is-large;
+    
+    > svg {
+        height: 1.5em;
+        fill: currentColor;
+        margin-bottom: -0.25em;
+    }
+}
+
+// Intro slide
+
+.slide-intro {
+    @extend .is-dark;
+    background: linear-gradient(to bottom, rgba(black, 0.75) 3rem, rgba($grey-darker, 0.5) 50%), url('../unsplash/marcus-zymmer-72SIp7T8AHE-unsplash.jpg') top center/cover no-repeat, black;
+    
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        font-size: 2em;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 1.25em;
+        font-weight: 400;
+    }
+}
+
+// Feature slide
+
+.slide-features {
+    @extend .section;
+    min-height: 100vh;
+    padding-top: 1.5*$navbar-height;
+}
+
+.feature {
+    display: flex;
+    margin: 0 -1.5rem;
+    $feature-margin: 1em;
+
+    > .picture {
+        flex: 1;
+        padding: $feature-margin;
+        background: center center/cover no-repeat;
+        min-height: 40vh;
+    }
+
+    &.one > .picture {
+        background-image: url('../unsplash/max-libertine-2qkISVyMwW8-unsplash.jpg');
+    }
+    &.two > .picture {
+        order: 2;
+        background-image: url('../unsplash/marcus-zymmer-7GOkjz3dRtA-unsplash.jpg');
+    }
+    &.three > .picture {
+        background-image: url('../unsplash/shaun-darwood-TC6u_HnDDqs-unsplash.jpg');
+    }
+
+    > .description {
+        flex: 1;
+        padding: $feature-margin;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        color: $white;
+        background: $primary;
+    }
+    
+    h3 {
+        display: inline-block;
+        font-size: 1.25em;
+        font-weight: 600;
+    }
+}
+
+// Install slide
+
+.slide-install {
+    @extend .section, .is-fullheight;
+}
