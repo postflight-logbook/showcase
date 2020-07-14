@@ -1,0 +1,19 @@
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ .Title }} - {{ .Site.Title }}</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ relURL "img/apple-touch-icon.png" }}">
+        {{- range (slice 32 16) }}
+        <link rel="icon" type="image/png" sizes="{{ . }}x{{ . }}" href="{{ printf "img/favicon-%dx%d.png" . . | relURL }}">
+        {{- end }}
+        <link rel="manifest" href="{{ relURL "manifest.json" }}">
+        <link rel="mask-icon" href="{{ relURL "img/safari-pinned-tab.svg" }}" color="#5bc0df">
+        <link rel="shortcut icon" href="{{ relURL "img/favicon.ico" }}">
+        <meta name="msapplication-config" content="{{ relURL "browserconfig.xml" }}">
+        <meta name="theme-color" content="#5bc0df">
+        {{/*- $styleBulma := resources.Get "yarn/bulma/css/bulma.min.css" | resources.Minify */}}
+        {{- $styleApp := resources.Get "sass/showcase.scss" | resources.ToCSS | resources.Minify }}
+        {{- $style := slice $styleApp | resources.Concat "css/site.min.css" | resources.Fingerprint }}
+        <link rel="stylesheet" href={{ $style.RelPermalink }}/>
+    </head>

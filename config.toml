@@ -1,0 +1,6 @@
+baseURL = "https://postflight.org/"
+languageCode = "en-us"
+title = "Postflight - An online EASA AMC1 FCL.050 private pilot flight log"
+
+disableKinds = ["taxonomy", "term", "RSS"]
+theme = "postflight-showcase"
