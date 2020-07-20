@@ -3,6 +3,10 @@
 $primary: #1f85a3;
 $primary-light: #5bc0df;
 
+$custom-colors: (
+    "primary-inversed": ($white, darken($primary, 5))
+);
+
 $navbar-background-color: transparent;
 $navbar-item-color: white;
 $navbar-item-hover-color: $navbar-item-color;
@@ -23,7 +27,7 @@ h2.title {
     background-color: transparent;
 
     &.is-solid {
-        @extend .is-white;
+        @extend .is-primary-inversed;
         background-color: darken($primary, 15);
         box-shadow: rgba(black, 0.25) 0 0 0.5em 0;
     }
