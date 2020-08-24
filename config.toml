@@ -4,6 +4,7 @@ title = "Postflight"
 
 disableKinds = ["taxonomy", "term", "RSS"]
 theme = "postflight-showcase"
+enableGitInfo = "true"
 
 [params]
   subtitle = "An online EASA AMC1 FCL.050 private pilot flight log"
