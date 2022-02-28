@@ -3,8 +3,13 @@ languageCode = "en-us"
 title = "Postflight"
 
 disableKinds = ["taxonomy", "term", "RSS"]
-theme = "postflight-showcase"
-enableGitInfo = "true"
+
+[frontmatter]
+  lastmod = [':git', 'lastmod', ':fileModTime', ':default']
 
 [params]
   subtitle = "An online EASA AMC1 FCL.050 private pilot flight log"
+  demo = "https://demo.postflight.org"
+  [params.github]
+  org = "https://github.com/postflight-org"
+  people = "https://github.com/orgs/postflight-org/people"
