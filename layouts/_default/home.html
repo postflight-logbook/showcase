@@ -1,10 +1,20 @@
 <html>
 {{ partial "head.html" . }}
 <body id="top">
-	{{ partial "header.html" . }}
-	{{ partial "intro.html" . }}
-	{{ partial "features.html" . }}
-	{{ partial "install.html" . }}
-	{{ partial "footer.html" . }}
+{{ partial "header.html" . }}
+	<section class="slide-intro">
+		<div class="{{ .Params.classes }}">
+{{ .Content }}
+		</div>
+	</section>
+	{{- range .Pages }}
+	<section class="slide-{{ .File.TranslationBaseName }}" id="{{ .File.TranslationBaseName }}">
+		<h2 class="title">{{ .Title }}</h2>
+		<div class="{{ .Params.classes }}">
+			{{ .Content }}
+		</div>
+	</section>
+	{{- end }}
+{{ partial "footer.html" . }}
 </body>
 </html>
