@@ -16,6 +16,7 @@ $navbar-item-hover-background-color: rgba(black, 0.25);
 
 h2.title {
     color: mix(midnightblue, black);
+    text-align: center;
 }
 
 // Navbar
@@ -51,11 +52,18 @@ h2.title {
 
 .slide-intro {
     @extend .is-dark;
-    background: linear-gradient(to bottom, rgba(black, 0.75) 3rem, rgba($grey-darker, 0.5) 50%), url('../unsplash/marcus-zymmer-72SIp7T8AHE-unsplash.jpg') top center/cover no-repeat, black;
+    background:
+        linear-gradient(to bottom, rgba(black, 0.5) 3rem, rgba($grey-darker, 0.4) 50%),
+        url('../unsplash/marcus-zymmer-72SIp7T8AHE-unsplash.jpg') top center/cover no-repeat,
+        black;
     
     min-height: 100vh;
     display: flex;
     align-items: center;
+
+    .container {
+        margin: 0 10vw;
+    }
 
     h1 {
         font-size: 2em;
@@ -89,13 +97,14 @@ h2.title {
     }
 
     &.one > .picture {
-        background-image: url('../unsplash/max-libertine-2qkISVyMwW8-unsplash.jpg');
-    }
-    &.two > .picture {
         order: 2;
         background-image: url('../unsplash/marcus-zymmer-7GOkjz3dRtA-unsplash.jpg');
     }
+    &.two > .picture {
+        background-image: url('../unsplash/max-libertine-2qkISVyMwW8-unsplash.jpg');
+    }
     &.three > .picture {
+        order: 2;
         background-image: url('../unsplash/shaun-darwood-TC6u_HnDDqs-unsplash.jpg');
     }
 
